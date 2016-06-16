@@ -23,4 +23,4 @@ All servers and services to be checked are managed by the `checklist.json` file.
     "url": "Optional"
 }
 ```
-Note that you are required to have either a URL or IP (and port) specified. In the event that you specify both the URL will be checked first. If the URL is not available then the IP will be used as a fallback.
+Note that you are required to have either a URL or IP (and port) specified. In the event that you specify both, the URL will be checked first. If the URL is not available then the IP will be used as a fallback.
