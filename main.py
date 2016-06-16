@@ -2,7 +2,7 @@ from flask import Flask, render_template
 import requests
 import socket
 
-TIMEOUT = 0.1
+TIMEOUT = 0.2
 
 app = Flask(__name__)
 
@@ -38,10 +38,10 @@ def check_site(addr):
 
 @app.route('/')
 def status():
-    servers = [(x, check_ip(x[1])) for x in default_servers]
+    servers = [(x, check_ip(x[2])) for x in default_servers]
     services = [(x, check_site(x[1])) for x in default_services]
 
     return render_template('index.html', servers=servers, services=services)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=4678, threaded=True, debug=True)
+    app.run(host='0.0.0.0', port=4678, threaded=False, debug=True)
