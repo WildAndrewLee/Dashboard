@@ -7,7 +7,7 @@ html, body {
 body {
     max-width: 540px;
     margin: 0px auto;
-    padding: 24px 0px 100px;
+    padding: 24px 0px 48px;
     background: url(/static/saber.png) no-repeat;
     background-position: calc(100% - 40px) 100%;
     box-sizing: border-box;
