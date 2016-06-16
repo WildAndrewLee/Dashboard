@@ -4,25 +4,6 @@
         <title>Saber</title>
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,500|Open+Sans:400,600' rel='stylesheet' type='text/css'>
         <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" />
-        <script>
-        function reload(){
-            var req = new XMLHttpRequest();
-
-            req.addEventListener('load', function(){
-                var html = req.responseText;
-                document.open();
-                document.write(html);
-                document.close();
-            });
-
-            req.open('GET', '/');
-            req.send();
-
-            setTimeout(reload, 10000);
-        }
-
-        setTimeout(reload, 10000);
-        </script>
     </head>
     <body>
         <h2>Servers</h2>
