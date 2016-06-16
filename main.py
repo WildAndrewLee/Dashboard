@@ -18,8 +18,7 @@ default_services = [
     ('Sniper', 'https://sniper.reticent.io/meta/sign_in'),
     ('Notepad', 'https://notepad.somoe.moe'),
     ('SoMoe', 'https://somoe.moe'),
-    ('zbAction', 'http://zbaction.reticent.io'),
-    ('Dashboard', 'http://saber.reticent.io')
+    ('zbAction', 'http://zbaction.reticent.io')
 ]
 
 def check_ip(addr):

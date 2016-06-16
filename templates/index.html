@@ -7,48 +7,23 @@
     </head>
     <body>
         <h2>Servers</h2>
-        <table>
-            <thead>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Availability</th>
-            </thead>
-            <tbody>
-                {% for server in servers %}
-                <tr>
-                    <td>{{ server[0][0] }}</td>
-                    <td>{{ server[0][1] }}</td>
-                    <td>
-                        {% if server[1] %}
-                        <span class="online">Online</span>
-                        {% else %}
-                        <span class="offline">Offline</span>
-                        {% endif %}
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        {% for server in servers %}
+        <aside class="{% if server[1] %}online{% else %}offline{% endif %}">
+            <span class="type">
+                {{ server[0][1] }} Droplet
+            </span>
+            <span>
+                {{ server[0][0] }}
+            </span>
+        </aside>
+        {% endfor %}
         <h2>Services</h2>
-        <table>
-            <thead>
-                <th>Name</th>
-                <th>Availability</th>
-            </thead>
-            <tbody>
-                {% for service in services %}
-                <tr>
-                    <td>{{ service[0][0] }}</td>
-                    <td>
-                        {% if service[1] %}
-                        <span class="online">Online</span>
-                        {% else %}
-                        <span class="offline">Offline</span>
-                        {% endif %}
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        {% for service in services %}
+        <aside class="{% if service[1] %}online{% else %}offline{% endif %}">
+            <span>
+                {{ service[0][0] }}
+            </span>
+        </aside>
+        {% endfor %}
     </body>
 </html>

@@ -8,8 +8,10 @@ body {
     margin: 0px auto;
 }
 
-h1, h2, h3 {
-    font-weight: 600;
+h2 {
+    font-size: 14px;
+    border-bottom: 1px solid #DDDDDD;
+    padding-bottom: 8px;
 }
 
 table {
@@ -31,16 +33,39 @@ td {
 }
 
 .online, .offline {
-    display: inline-block;
-    padding: 3px 5px;
     border-radius: 3px;
     color: #FFFFFF;
+    border-radius: 4px;
+    margin-bottom: 1em;
+}
+
+.online span, .offline span {
+    padding: 8px 12px;
+    display: inline-block;
+}
+
+.online .type, .offline .type {
+    border-radius: 4px 0px 0px 4px;
 }
 
 .online {
-    background: #9DBD68;
+    background: #f0f7f4;
+    border: 1px solid #69b99e;
+    border-radius: 4px;
+    color: #3d9c7c;
+}
+
+.offline .type {
+    background: #D1FFEE;
 }
 
 .offline {
-    background: #CC6666;
+    background: #FFF8F8;
+    border: 1px solid #e29999;
+    border-radius: 4px;
+    color: #CC6666;
+}
+
+.offline .type {
+    background: #ffe4e4;
 }
