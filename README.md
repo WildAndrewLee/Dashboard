@@ -24,3 +24,5 @@ All servers and services to be checked are managed by the `checklist.json` file.
 }
 ```
 Note that you are required to have either a URL or IP (and port) specified. In the event that you specify both, the URL will be checked first. If the URL is not available then the IP will be used as a fallback.
+
+Because you can use an IP address and port instead of a URL, Dashboard allows you to check for lots of different things. For example: you can check for redis availablility on your local or PostgreSQL availability on a remote server.
