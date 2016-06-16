@@ -9,8 +9,9 @@ body {
     margin: 0px auto;
     padding: 24px 0px 100px;
     background: url(/static/saber.png) no-repeat;
-    background-position: calc(100% - 50px) 100%;
+    background-position: calc(100% - 40px) 100%;
     box-sizing: border-box;
+    background-size: auto 200px;
 }
 
 a {
