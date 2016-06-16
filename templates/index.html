@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Saber</title>
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,500|Open+Sans:400,600' rel='stylesheet' type='text/css'>
+        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" />
+        <script>
+        function reload(){
+            var req = new XMLHttpRequest();
+
+            req.addEventListener('load', function(){
+                var html = req.responseText;
+                document.open();
+                document.write(html);
+                document.close();
+            });
+
+            req.open('GET', '/');
+            req.send();
+
+            setTimeout(reload, 10000);
+        }
+
+        setTimeout(reload, 10000);
+        </script>
+    </head>
+    <body>
+        <h2>Servers</h2>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Availability</th>
+            </thead>
+            <tbody>
+                {% for server in servers %}
+                <tr>
+                    <td>{{ server[0][0] }}</td>
+                    <td>{{ server[0][1] }}</td>
+                    <td>
+                        {% if server[1] %}
+                        <span class="online">Online</span>
+                        {% else %}
+                        <span class="offline">Offline</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2>Services</h2>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Availability</th>
+            </thead>
+            <tbody>
+                {% for service in services %}
+                <tr>
+                    <td>{{ service[0][0] }}</td>
+                    <td>
+                        {% if service[1] %}
+                        <span class="online">Online</span>
+                        {% else %}
+                        <span class="offline">Offline</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+html, body {
+    font-family: Open Sans;
+    font-size: 14px;
+}
+
+body {
+    max-width: 540px;
+    margin: 0px auto;
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0px;
+    width: 100%;
+}
+
+th, td {
+    padding: 3px 5px;
+}
+
+th {
+    border-bottom: 2px solid #CCCCCC;
+}
+
+td {
+    border: 1px solid #DDDDDD;
+}
+
+.online, .offline {
+    display: inline-block;
+    padding: 3px 5px;
+    border-radius: 3px;
+    color: #FFFFFF;
+}
+
+.online {
+    background: #9DBD68;
+}
+
+.offline {
+    background: #CC6666;
+}
