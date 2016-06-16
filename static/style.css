@@ -62,6 +62,7 @@ td {
 
 .online .type, .offline .type {
     border-radius: 4px 0px 0px 4px;
+    min-width: 6em;
 }
 
 .online {
