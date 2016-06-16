@@ -6,6 +6,17 @@ html, body {
 body {
     max-width: 540px;
     margin: 0px auto;
+    padding: 24px 0px;
+}
+
+a {
+    color: #5764c6;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #4551a7;
 }
 
 h2 {
@@ -68,4 +79,10 @@ td {
 
 .offline .type {
     background: #ffe4e4;
+}
+
+.updated {
+    color: #888888;
+    font-weight: 700;
+    font-size: 12px;
 }

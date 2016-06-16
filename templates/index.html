@@ -6,22 +6,30 @@
         <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" />
     </head>
     <body>
-        <h2>Servers</h2>
-        {% for server in servers %}
-        <aside class="{% if server[1] %}online{% else %}offline{% endif %}">
+        <a href="https://reticent.io">← Back To reticent.io</a>
+        <!-- Last Updated hardcoded isn't cheating...it's on a cronjob... -->
+        <h2>
+            Servers
+            <span class="updated">Updated One Minute Ago</span>
+        </h2>
+        {% for server in status.servers %}
+        <aside class="{% if server.status %}online{% else %}offline{% endif %}">
             <span class="type">
-                {{ server[0][1] }} Droplet
+                {{ server.type }} Droplet
             </span>
             <span>
-                {{ server[0][0] }}
+                {{ server.name }}
             </span>
         </aside>
         {% endfor %}
-        <h2>Services</h2>
-        {% for service in services %}
-        <aside class="{% if service[1] %}online{% else %}offline{% endif %}">
+        <h2>
+            Services
+            <span class="updated">Updated One Minute Ago</span>
+        </h2>
+        {% for service in status.services %}
+        <aside class="{% if service.status %}online{% else %}offline{% endif %}">
             <span>
-                {{ service[0][0] }}
+                {{ service.name }}
             </span>
         </aside>
         {% endfor %}
