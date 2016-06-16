@@ -1,0 +1,56 @@
+{
+    "checklist": [
+        {
+            "category": "Servers",
+            "list": [
+                {
+                    "name": "Reticence",
+                    "type": "T2 Droplet",
+                    "ip": "10.132.64.47",
+                    "port": 80
+                },
+                {
+                    "name": "Saber",
+                    "type": "T1 Droplet",
+                    "ip": "10.132.67.8",
+                    "port": 80
+                },
+                {
+                    "name": "Assassin",
+                    "type": "T1 Droplet",
+                    "ip": "10.132.64.81",
+                    "port": 80
+                }
+            ]
+        },
+        {
+            "category": "Web Services",
+            "list": [
+                {
+                    "name": "Personal Site",
+                    "url": "https://reticent.io"
+                },
+                {
+                    "name": "Eevee",
+                    "url": "https://eevee.reticent.io"
+                },
+                {
+                    "name": "Sniper",
+                    "url": "https://sniper.reticent.io/meta/sign_in"
+                },
+                {
+                    "name": "SoMoe",
+                    "url": "https://somoe.moe"
+                },
+                {
+                    "name": "Notepad",
+                    "url": "https://notepad.somoe.moe"
+                },
+                {
+                    "name": "zbAction",
+                    "url": "http://zbaction.reticent.io"
+                }
+            ]
+        }
+    ]
+}

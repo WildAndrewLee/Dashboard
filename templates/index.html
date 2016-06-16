@@ -8,30 +8,23 @@
     <body>
         <a href="https://reticent.io">← Back To reticent.io</a>
         <!-- Last Updated hardcoded isn't cheating...it's on a cronjob... -->
-        <h2>
-            Servers
-            <span class="updated">Updated One Minute Ago</span>
-        </h2>
-        {% for server in status.servers %}
-        <aside class="{% if server.status %}online{% else %}offline{% endif %}">
-            <span class="type">
-                {{ server.type }} Droplet
-            </span>
-            <span>
-                {{ server.name }}
-            </span>
-        </aside>
-        {% endfor %}
-        <h2>
-            Services
-            <span class="updated">Updated One Minute Ago</span>
-        </h2>
-        {% for service in status.services %}
-        <aside class="{% if service.status %}online{% else %}offline{% endif %}">
-            <span>
-                {{ service.name }}
-            </span>
-        </aside>
+        {% for category in status.checklist %}
+            <h2>
+                {{ category.category }}
+                <span class="updated">Updated One Minute Ago</span>
+            </h2>
+            {% for item in category.list %}
+                <aside class="{% if item.status %}online{% else %}offline{% endif %}">
+                    {% if item.type %}
+                        <span class="type">
+                            {{ item.type }}
+                        </span>
+                    {% endif %}
+                    <span>
+                        {{ item.name }}
+                    </span>
+                </aside>
+            {% endfor %}
         {% endfor %}
     </body>
 </html>

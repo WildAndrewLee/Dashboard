@@ -1,53 +1,52 @@
 import requests
 import socket
 import json
+import os
+from object import Object
 
-TIMEOUT = 0.2
+CURRENT_DIR = os.path.abspath(os.path.dirname(__file__))
 
-default_servers = [
-    ('Reticent', 'T2', ('10.132.64.47', 80)),
-    ('Saber', 'T1', ('10.132.67.8', 80)),
-    ('Assassin', 'T1', ('10.132.67.81', 80))
-]
-
-default_services = [
-    ('Personal Site', 'https://reticent.io'),
-    ('Eevee', 'https://eevee.reticent.io'),
-    ('Sniper', 'https://sniper.reticent.io/meta/sign_in'),
-    ('Notepad', 'https://notepad.somoe.moe'),
-    ('SoMoe', 'https://somoe.moe'),
-    ('zbAction', 'http://zbaction.reticent.io')
-]
+with open(os.path.join(CURRENT_DIR, 'checklist.json')) as checklist:
+    with open(os.path.join(CURRENT_DIR, 'config.json')) as config:
+        checklist = Object(json.loads(checklist.read()))
+        config = Object(json.loads(config.read()))
 
 def check_ip(addr):
     try:
-        socket.create_connection(addr, timeout=TIMEOUT)
+        socket.create_connection(addr, timeout=config.timeout)
         return True
     except socket.error:
         return False
 
 def check_site(addr):
     try:
-        r = requests.head(addr, timeout=TIMEOUT)
+        r = requests.head(addr, timeout=config.timeout)
         return r.status_code >= 200 and r.status_code < 300
     except:
         return False
 
-servers = [(x, check_ip(x[2])) for x in default_servers]
-services = [(x, check_site(x[1])) for x in default_services]
+for category in checklist.checklist:
+    l = category.list
 
-print json.dumps({
-    'servers': [
-        {
-            'name': x[0][0],
-            'type': x[0][1],
-            'status': x[1]
-        } for x in servers
-    ],
-    'services': [
-        {
-            'name': x[0][0],
-            'status': x[1]
-        } for x in services
-    ]
-})
+    for to_check in l:
+        if hasattr(to_check, 'url'):
+            to_check.status = check_site(to_check.url)
+        elif hasattr(to_check, 'ip') and hasattr(to_check, 'port'):
+            to_check.status = check_ip((to_check.ip, to_check.port))
+        else:
+            raise AttributeError
+
+to_dump = {
+    'checklist': []
+}
+
+for category in checklist.checklist:
+    to_dump['checklist'].append({
+        'category': category.category,
+        'list': [
+            x.__dict__ for x in category.list
+        ]
+    })
+
+with open(os.path.join(CURRENT_DIR, 'status.json'), 'w+') as f:
+    f.write(json.dumps(to_dump))

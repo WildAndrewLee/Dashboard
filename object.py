@@ -15,6 +15,7 @@ class Object(dict):
 
     def __setattr__(self, name, val):
         self[name] = val
+        self.__dict__[name] = val
 
     def update(self, val):
         for key in val:
