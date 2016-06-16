@@ -31,7 +31,7 @@ for category in checklist.checklist:
     for to_check in l:
         if hasattr(to_check, 'url'):
             to_check.status = check_site(to_check.url)
-        elif hasattr(to_check, 'ip') and hasattr(to_check, 'port'):
+        elif not getattr(to_check, 'status', False) and hasattr(to_check, 'ip') and hasattr(to_check, 'port'):
             to_check.status = check_ip((to_check.ip, to_check.port))
         else:
             raise AttributeError
