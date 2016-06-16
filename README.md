@@ -15,7 +15,7 @@ Adding Servers/Services
 
 All servers and services to be checked are managed by the `checklist.json` file. A server/service to check will take the form:
 ```
-{{
+{
     "name": "Required",
     "type": "Optional",
     "ip": "Optional",
