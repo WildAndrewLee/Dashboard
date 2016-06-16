@@ -7,7 +7,8 @@ CURRENT_DIR = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
 
-TIMEOUT = 0.2
+with open(os.path.join(CURRENT_DIR, 'config.json')) as f:
+    config = Object(json.loads(f.read()))
 
 @app.route('/')
 def status():
@@ -16,4 +17,4 @@ def status():
         return render_template('index.html', status=Object(status))
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=4678, threaded=False, debug=True)
+    app.run(host='0.0.0.0', port=config.port, threaded=False, debug=True)

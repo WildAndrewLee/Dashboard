@@ -1,4 +1,5 @@
 {
     "timeout": 0.2,
-    "_timeout_comment": "In seconds."
+    "_timeout_comment": "In seconds.",
+    "port": 4678
 }
