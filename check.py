@@ -14,16 +14,32 @@ with open(os.path.join(CURRENT_DIR, 'checklist.json')) as checklist:
 def check_ip(addr):
     try:
         socket.create_connection(addr, timeout=config.timeout)
-        return True
+        return 1
+    except socket.timeout:
+        try:
+            socket.create_connection(addr, timeout=config.timeout + 0.5);
+            return 2
+        except socket.timeout:
+            return 0
     except socket.error:
-        return False
+        return 0
 
 def check_site(addr):
     try:
         r = requests.head(addr, timeout=config.timeout)
-        return r.status_code >= 200 and r.status_code < 300
+
+        if r.status_code >= 200 and r.status_code < 300:
+            return 1
+        else:
+            return 0
+    except requests.exception.timeout:
+        try:
+            r = requests.head(addr, timeout=config.timeout + 0.5);
+            return 2
+        except requests.exception.timeout:
+            return 0
     except:
-        return False
+        return 0
 
 for category in checklist.checklist:
     l = category.list

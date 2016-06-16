@@ -14,7 +14,7 @@
                 <span class="updated">Updated One Minute Ago</span>
             </h2>
             {% for item in category.list %}
-                <aside class="{% if item.status %}online{% else %}offline{% endif %}">
+                <aside class="slow">
                     {% if item.type %}
                         <span class="type">
                             {{ item.type }}
