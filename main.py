@@ -7,9 +7,9 @@ TIMEOUT = 0.1
 app = Flask(__name__)
 
 default_servers = [
-    ('Reticent', 'T2', '10.132.64.47'),
-    ('Saber', 'T1', '10.132.67.8'),
-    ('Assassin', 'T1', '10.132.67.81')
+    ('Reticent', 'T2', ('10.132.64.47', 80)),
+    ('Saber', 'T1', ('10.132.67.8', 80)),
+    ('Assassin', 'T1', ('10.132.67.81', 80))
 ]
 
 default_services = [
