@@ -52,5 +52,14 @@
                 }
             ]
         }
+        {
+            "category": "Game Servers",
+            "list": [
+                {
+                    "name": "Minecraft",
+                    "url": "http://minecraft.reticent.io"
+                }
+            ]
+        }
     ]
 }
