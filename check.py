@@ -32,11 +32,11 @@ def check_site(addr):
             return 1
         else:
             return 0
-    except requests.exceptions.timeout:
+    except requests.exceptions.Timeout:
         try:
             r = requests.head(addr, timeout=config.timeout + 0.5);
             return 2
-        except requests.exceptions.timeout:
+        except requests.exceptions.Timeout:
             return 0
     except:
         return 0
