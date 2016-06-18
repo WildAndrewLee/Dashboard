@@ -36,7 +36,7 @@ def check_site(addr):
         try:
             r = requests.head(addr, timeout=config.timeout + 0.5);
             return 2
-        except requests.exception.timeout:
+        except requests.exceptions.timeout:
             return 0
     except:
         return 0
